@@ -16,7 +16,7 @@ const totalHeight = window.innerHeight;
 let elapsed = 0;
 let pause = true;
 const pauseChar = '⏸️';
-const playChar = '▶️'; 
+const playChar = '▶️';
 
 const defaultSettings = {
   "durationInSeconds": 600,
