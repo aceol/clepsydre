@@ -6,7 +6,8 @@ const defaultSettings = {
     secondThreshold: 0.9,
     thirdThreshold: 0.95,
     soundEnabled: false,
-    orientation: "upward"
+    orientation: "upward",
+    additionalTime: true,
 }
 
 let settings;
@@ -17,6 +18,7 @@ function initSettings({ durationInSeconds, soundEnabled, settingsModalElement, s
     settingsModal = settingsModalElement;
     settingsForm = settingsFormElement;
     settings = { ...defaultSettings, durationInSeconds, soundEnabled }
+    updateSettingsForm();
     return settings;
 }
 
@@ -37,6 +39,7 @@ function submitSettings() {
     settings.thirdThreshold = settingsForm["threshold3"].value / 100;
     settings.soundEnabled = settingsForm["play-sound"].checked;
     settings.orientation = settingsForm["orientation"].value;
+    settings.additionalTime = settingsForm["additionalTime"].checked;
 
     hideSettings();
 }
@@ -53,6 +56,7 @@ function updateSettingsForm() {
     settingsForm["threshold3"].value = settings.thirdThreshold * 100;
     settingsForm["play-sound"].checked = settings.soundEnabled;
     settingsForm["orientation"].value = settings.orientation;
+    settingsForm["additionalTime"].checked = settings.additionalTime;
 }
 
 function resetDefaultSettings() {

@@ -16,6 +16,7 @@ describe('initSettings', () => {
             showTimer: true,
             soundEnabled: true,
             thirdThreshold: 0.95,
+            additionalTime: true,
         });
     });
 });
@@ -57,6 +58,7 @@ describe('submitSettings', () => {
         orientation: { value: 'downward' },
         ["show-timer"]: { checked: false },
         ["play-sound"]: { checked: false },
+        additionalTime: { checked: false },
     };
 
     it(`Should close the modal`, () => {
@@ -83,6 +85,7 @@ describe('submitSettings', () => {
             orientation: 'downward',
             showTimer: false,
             soundEnabled: false,
+            additionalTime: false,
         });
     });
 });
@@ -99,6 +102,7 @@ describe('updateSettingsForm', () => {
         orientation: { value: undefined },
         ["show-timer"]: { checked: undefined },
         ["play-sound"]: { checked: undefined },
+        additionalTime: { checked: undefined },
     };
 
     it(`Should update the form with the given settings`, () => {
@@ -117,6 +121,7 @@ describe('updateSettingsForm', () => {
             orientation: { value: 'upward' },
             ["show-timer"]: { checked: true },
             ["play-sound"]: { checked: true },
+            additionalTime: { checked: true },
         });
     });
 });

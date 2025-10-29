@@ -17,7 +17,7 @@ const totalHeight = window.innerHeight;
 let elapsed = 0;
 let pause = true;
 const pauseChar = '⏸️';
-const playChar = '▶️'; 
+const playChar = '▶️';
 
 let wakeLock = null;
 
@@ -68,15 +68,19 @@ function startAnimation(startTime = performance.now(), settings) {
     } else if (progress < 1) {
       requestAnimationFrame(animate);
     } else {
-      timer.textContent = "00:00";
-      playBeep(settings);
-      timer.classList.add("blinking"); // démarre le clignotement
+      if (settings.additionalTime) {
+        requestAnimationFrame(animate);
+      } else {
+        timer.textContent = "00:00";
+        playBeep(settings);
+        timer.classList.add("blinking"); // démarre le clignotement
 
-      // Arrête le clignotement après 5 secondes
-      setTimeout(() => {
-        timer.classList.remove("blinking");
-        timer.style.opacity = "1";
-      }, 5000);
+        // Arrête le clignotement après 5 secondes
+        setTimeout(() => {
+          timer.classList.remove("blinking");
+          timer.style.opacity = "1";
+        }, 5000);
+      }
     }
   }
   requestAnimationFrame(animate);
